@@ -43,3 +43,24 @@ You might not agree with the programmer’s solution to the problem, but at leas
 
 * Warning of consequences
 
+```javascript
+// Don't run unless you
+// have some time to kill.
+function _testWithReallyBigFile() {
+  res.send(reallyBigFile);
+}
+```
+
+* TODO comments
+
+### Bad comments
+List of bad comments may be to long. Just know that if you still had to write a comment, it should not be:
+* Mumbling
+* Redundant comments
+* Misleading comments
+* Mandated comments (like "function must have a javadoc")
+* Position markers
+* Closing brace comments 
+* and such bullshit
+
+**Make clear code**
