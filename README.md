@@ -20,10 +20,11 @@ Comments like this should not be contracts or legal tomes. Where possible, refer
 
 * Informative comments
 
-  // format matched kk:mm:ss EEE, MMM dd, yyyy
-  Pattern timeMatcher = Pattern.compile(
-  "\\d*:\\d*:\\d* \\w*, \\w* \\d*, \\d*");
+```javascript
+// format matched kk:mm:ss EEE, MMM dd, yyyy
+const timeMatcher = Pattern.compile("\\d*:\\d*:\\d* \\w*, \\w* \\d*, \\d*");
+```
 
-  In this case the comment lets us know that the regular expression is intended to match a time and date. Still, it might have been better, and clearer, if this code had been moved to a special class that converted the formats of dates and times. Then the comment would likely have been superfluous.
+In this case the comment lets us know that the regular expression is intended to match a time and date. Still, it might have been better, and clearer, if this code had been moved to a special class that converted the formats of dates and times. Then the comment would likely have been superfluous.
 
 * Expression of intent
