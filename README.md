@@ -63,4 +63,4 @@ List of bad comments may be to long. Just know that if you still had to write a 
 * Closing brace comments 
 * and such bullshit
 
-**Make clear code**
+**Make clean, self-documenting code**
