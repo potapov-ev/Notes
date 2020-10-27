@@ -8,13 +8,13 @@ Comments are always failures. We must have them because we cannot always figure 
 
 However, some comments are necessary or beneficial. Keep in mind, that the only truly good comment is the comment you found a way not to write.
 
-# Good comments
+### Good comments
 * Legal comments
 
     // Copyright (C) 2003,2004,2005 by Object Mentor, Inc. All rights reserved.
     // Released under the terms of the GNU General Public License version 2 or later.
 
-  Comments like this should not be contracts or legal tomes. Where possible, refer to a standard license or other external document rather than putting all the terms and conditions into the comment
+Comments like this should not be contracts or legal tomes. Where possible, refer to a standard license or other external document rather than putting all the terms and conditions into the comment
 
 * Informative comments
 
