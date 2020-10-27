@@ -28,3 +28,18 @@ const timeMatcher = Pattern.compile("\\d*:\\d*:\\d* \\w*, \\w* \\d*, \\d*");
 In this case the comment lets us know that the regular expression is intended to match a time and date. Still, it might have been better, and clearer, if this code had been moved to a special class that converted the formats of dates and times. Then the comment would likely have been superfluous.
 
 * Expression of intent
+
+```C++
+//This is our best attempt to get a race condition 
+//by creating large number of threads. 
+for (int i = 0; i < 25000; i++) { 
+  WidgetBuilderThread widgetBuilderThread = new WidgetBuilderThread(widgetBuilder, text, parent, failFlag); 
+  Thread thread = new Thread(widgetBuilderThread); 
+  thread.start(); 
+}
+```
+
+You might not agree with the programmer’s solution to the problem, but at least you know what he was trying to do.
+
+* Warning of consequences
+
