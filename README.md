@@ -106,8 +106,62 @@ This subtle bit of misinformation, couched in a comment that is harder to read t
 **Don't mislead others with your comments**
 
 * Mandated comments (like "function must have a javadoc")
+
+It is just plain silly to have a rule that says that every function must have a javadoc, or every variable must have a comment. Comments like this just clutter up the code, propagate lies, and lend to general confusion and disorganization. 
+
+```javascript
+/**
+ *
+ * @param title The title of the CD
+ * @param author The author of the CD
+ * @param tracks The number of tracks on the CD
+ * @param durationInMinutes The duration of the CD in minutes
+ */
+ function addCD(title, author, tracks, durationInMinutes) {
+   const cd = new CD();
+   cd.title = title;
+   cd.author = author;
+   cd.tracks = tracks;
+   cd.duration = duration;
+   cdList.add(cd);
+ }
+```
+
+**This clutter adds nothing and serves only to obfuscate the code and create the potential for lies and misdirection.**
+
 * Position markers
+
+Sometimes programmers like to mark a particular position in a source file. 
+```javascript
+// Actions //////////////////////////////////
+```
+
+There are rare times when it makes sense to gather certain functions together beneath a banner like this. But in general they are clutter that should be eliminated—especially the noisy train of slashes at the end.
+Think of it this way. A banner is startling and obvious if you don’t see banners very often. So use them very sparingly, and only when the benefit is significant. If you overuse banners, they’ll fall into the background noise and be ignored.
+
+**Use regions in these cases**
+
 * Closing brace comments 
+
+```javascript
+    while (!line) {
+      lineCount++;
+      charCount += line.length();
+      const words = line.split(" ");
+      wordCount += words.length;
+    } //while
+    System.out.println("wordCount = " + wordCount);
+    System.out.println("lineCount = " + lineCount);
+    System.out.println("charCount = " + charCount);
+  } // try
+  catch (er) {
+  console.log("Error:" + er);
+  } //catch
+} //function
+```
+
+**Use IDE extensions for syntax highlighting**
+ 
 * and such bullshit
 
 **Make clean, self-documenting code**
