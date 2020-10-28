@@ -55,7 +55,28 @@ function _testWithReallyBigFile() {
 
 ### Bad comments
 List of bad comments may be to long. Just know that if you still had to write a comment, it should not be:
+
 * Mumbling
+
+```javascript
+function loadProperties() {
+  try {
+    const propertiesPath = propertiesLocation + "/" + PROPERTIES_FILE;
+    const properties = readFileSync(propertiesPath);
+    loadedProperties.load(properties);
+  }
+  catch(er) {
+    // No properties files means all defaults are loaded
+  }
+}
+```
+
+What does that comment in the catch block mean? Clearly it meant something to the author, but the meaning does not come through all that well. Apparently, if we get an IOException, it means that there was no properties file; and in that case all the defaults are loaded. But who loads all the defaults? Were they loaded before the call to
+loadProperties.load?
+Our only recourse is to examine the code in other parts of the system to find out what’s going on. Any comment that forces you to look in another module for the meaning of that comment has failed to communicate to you and is not worth the bits it consumes. 
+
+**You should be clear in your comments**
+
 * Redundant comments
 * Misleading comments
 * Mandated comments (like "function must have a javadoc")
