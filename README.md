@@ -64,8 +64,7 @@ function loadProperties() {
     const propertiesPath = propertiesLocation + "/" + PROPERTIES_FILE;
     const properties = readFileSync(propertiesPath);
     loadedProperties.load(properties);
-  }
-  catch(er) {
+  } catch(er) {
     // No properties files means all defaults are loaded
   }
 }
@@ -78,7 +77,34 @@ Our only recourse is to examine the code in other parts of the system to find ou
 **You should be clear in your comments**
 
 * Redundant comments
+
+```java
+// Utility method that returns when this.closed is true. Throws an exception
+// if the timeout is reached.
+public synchronized void waitForClose(final long timeoutMillis)
+  throws Exception
+{
+  if(!closed) {
+    wait(timeoutMillis);
+    if(!closed) throw new Exception("MockResponseSender could not be closed");
+  }
+}
+```
+
+What purpose does this comment serve? It’s certainly not more informative than the code. It does not justify the code, or provide intent or rationale. It is not easier to read than the code.
+
+**No need to duplicate code in your comments**
+
 * Misleading comments
+
+Sometimes, with all the best intentions, a programmer makes a statement in his comments that isn’t precise enough to be accurate. Consider for another moment the badly redundant but also subtly misleading comment we saw in previous example.
+
+The method does not return when this.closed becomes true. It returns if this.closed is true; otherwise, it waits for a blind time-out and then throws an exception if this.closed is still not true.
+
+This subtle bit of misinformation, couched in a comment that is harder to read than the body of the code, could cause another programmer to blithely call this function in the expectation that it will return as soon as this.closed becomes true. That poor programmer would then find himself in a debugging session trying to figure out why his code executed so slowly.
+
+**Don't mislead others with your comments**
+
 * Mandated comments (like "function must have a javadoc")
 * Position markers
 * Closing brace comments 
