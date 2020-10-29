@@ -1,7 +1,8 @@
 ## Comments
 
->Nothing can be quite so helpful as a well-placed comment. Nothing can clutter >up a module more than frivolous dogmatic comments. Nothing can be quite so >damaging as an old crufty comment that propagates lies and misinformation.
-
+>Nothing can be quite so helpful as a well-placed comment. Nothing can clutter >up a module more than frivolous dogmatic comments. Nothing can be quite so damaging as an old crufty comment that propagates lies and misinformation.
+ - Robert C. Martin "Clean Code"
+ 
 Commentary is a necessary evil
 
 Comments are always failures. We must have them because we cannot always figure out how to express ourselves without them, but their use is not a cause for celebration. The ideal situation is when your code doesn't need comments. We must strive for this.
@@ -29,29 +30,42 @@ In this case the comment lets us know that the regular expression is intended to
 
 * Expression of intent
 
-```C++
+```javascript
+const { Worker } = require('worker_threads')
+
 //This is our best attempt to get a race condition 
 //by creating large number of threads. 
-for (int i = 0; i < 25000; i++) { 
+for (let i = 0; i < 25000; i++) { 
   WidgetBuilderThread widgetBuilderThread = new WidgetBuilderThread(widgetBuilder, text, parent, failFlag); 
-  Thread thread = new Thread(widgetBuilderThread); 
-  thread.start(); 
+  const worker = new Worker('./service.js', { widgetBuilderThread.data });
+  worker.on('message', resolve);
 }
 ```
 
-You might not agree with the programmer’s solution to the problem, but at least you know what he was trying to do.
+You might not agree with the programmer’s solution to the problem, but at least you know what he was trying to do, but sometimes it is better to put such code into a function with a descriptive name.
 
 * Warning of consequences
+  
+Sometimes it is useful to warn other programmers about certain consequences. For example, here is a comment that explains why a particular test case is turned off. 
 
 ```javascript
-// Don't run unless you
-// have some time to kill.
-function _testWithReallyBigFile() {
-  res.send(reallyBigFile);
+// Do not start, otherwise you will have to kill manually
+function testWithReallyBigFile() {
+  ParserService.parse(reallyBigFile);
 }
 ```
 
+The comment, while flippant, makes the point pretty well. 
+
 * TODO comments
+
+Sometimes you have an optional task that does not require immediate execution, a task with a focus on the future. It is maybe reasonable to leave “To do” notes in the form of //TODO comments. 
+
+```javascript
+// TODO: decide on the top-level export form.
+// This is hacky but makes it work with both Rollup and Jest
+module.exports = ReactDOMServer.default || ReactDOMServer;
+```
 
 ### Bad comments
 List of bad comments may be to long. Just know that if you still had to write a comment, it should not be:
@@ -78,15 +92,13 @@ Our only recourse is to examine the code in other parts of the system to find ou
 
 * Redundant comments
 
-```java
+```javascript
 // Utility method that returns when this.closed is true. Throws an exception
 // if the timeout is reached.
-public synchronized void waitForClose(final long timeoutMillis)
-  throws Exception
-{
-  if(!closed) {
+function waitForClose(timeoutMillis) {
+  if(!this.closed) {
     wait(timeoutMillis);
-    if(!closed) throw new Exception("MockResponseSender could not be closed");
+    if(!this.closed) throw new Error("MockResponseSender could not be closed");
   }
 }
 ```
