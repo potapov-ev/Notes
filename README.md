@@ -153,7 +153,7 @@ Sometimes programmers like to mark a particular position in a source file.
 There are rare times when it makes sense to gather certain functions together beneath a banner like this. But in general they are clutter that should be eliminated—especially the noisy train of slashes at the end.
 Think of it this way. A banner is startling and obvious if you don’t see banners very often. So use them very sparingly, and only when the benefit is significant. If you overuse banners, they’ll fall into the background noise and be ignored.
 
-**Use regions in these cases**
+**Use [regions](https://marketplace.visualstudio.com/items?itemName=mihelcic.colored-regions) in these cases**
 
 * Closing brace comments 
 
