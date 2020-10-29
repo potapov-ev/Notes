@@ -174,7 +174,7 @@ Think of it this way. A banner is startling and obvious if you don’t see banne
 } //function
 ```
 
-**Use IDE extensions for syntax highlighting**
+**Use IDE [extensions](https://marketplace.visualstudio.com/items?itemName=2gua.rainbow-brackets) for syntax highlighting**
  
 * and such bullshit
 
