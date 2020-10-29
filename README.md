@@ -36,7 +36,7 @@ const { Worker } = require('worker_threads')
 //This is our best attempt to get a race condition 
 //by creating large number of threads. 
 for (let i = 0; i < 25000; i++) { 
-  WidgetBuilderThread widgetBuilderThread = new WidgetBuilderThread(widgetBuilder, text, parent, failFlag); 
+  const widgetBuilderThread = new WidgetBuilderThread(widgetBuilder, text, parent, failFlag); 
   const worker = new Worker('./service.js', { widgetBuilderThread.data });
   worker.on('message', resolve);
 }
@@ -66,6 +66,8 @@ Sometimes you have an optional task that does not require immediate execution, a
 // This is hacky but makes it work with both Rollup and Jest
 module.exports = ReactDOMServer.default || ReactDOMServer;
 ```
+
+[Use an extension for your IDE](https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight)
 
 ### Bad comments
 List of bad comments may be to long. Just know that if you still had to write a comment, it should not be:
